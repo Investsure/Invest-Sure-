@@ -1,45 +1,57 @@
-// Firebase Authentication ফাংশন
-const auth = firebase.auth();
+import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from './firebase-config.js';
 
-// 🔥 Sign Up Function
+// 🔹 **সাইন আপ ফাংশন**
 function signUp() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+  let email = document.getElementById("signup-email").value;
+  let password = document.getElementById("signup-password").value;
 
-    auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            document.getElementById("message").innerText = "✅ Account created successfully!";
-        })
-        .catch((error) => {
-            document.getElementById("message").innerText = "❌ " + error.message;
-        });
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      alert("Sign-up Successful!");
+      window.location.href = "dashboard.html"; // সফল হলে ড্যাশবোর্ডে পাঠাবে
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
 }
 
-// 🔥 Login Function
+// 🔹 **লগইন ফাংশন**
 function login() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+  let email = document.getElementById("login-email").value;
+  let password = document.getElementById("login-password").value;
 
-    auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            document.getElementById("message").innerText = "✅ Login successful!";
-            window.location.href = "dashboard.html"; // Dashboard এ রিডাইরেক্ট
-        })
-        .catch((error) => {
-            document.getElementById("message").innerText = "❌ " + error.message;
-        });
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      alert("Login Successful!");
+      window.location.href = "dashboard.html"; // লগইন সফল হলে ড্যাশবোর্ডে পাঠাবে
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
 }
 
-// 🔥 Google Login Function
-function loginWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    auth.signInWithPopup(provider)
-        .then((result) => {
-            document.getElementById("message").innerText = "✅ Google Login successful!";
-            window.location.href = "dashboard.html"; // Dashboard এ রিডাইরেক্ট
-        })
-        .catch((error) => {
-            document.getElementById("message").innerText = "❌ " + error.message;
-        });
+// 🔹 **লগআউট ফাংশন**
+function logout() {
+  signOut(auth)
+    .then(() => {
+      alert("Logged out successfully!");
+      window.location.href = "index.html"; // লগআউট হলে হোমপেজে যাবে
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
 }
+
+// 🔹 **Sign-up থেকে Login-এ সুইচ ফাংশন**
+document.getElementById("switch-to-login").addEventListener("click", function() {
+  document.getElementById("signup-form").style.display = "none";
+  document.getElementById("login-form").style.display = "block";
+});
+
+document.getElementById("switch-to-signup").addEventListener("click", function() {
+  document.getElementById("login-form").style.display = "none";
+  document.getElementById("signup-form").style.display = "block";
+});
+
+// Export functions (optional)
+export { signUp, login, logout };
