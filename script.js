@@ -51,3 +51,43 @@ function logout() {
         alert("❌ " + error.message);
     });
 }
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        // ইউজার লগইন থাকলে ড্যাশবোর্ডে পাঠানো হবে
+        window.location.href = "dashboard.html";
+    }
+});
+// 🔑 User Login Function
+function login() {
+    let email = document.getElementById("login-email").value;
+    let password = document.getElementById("login-password").value;
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // লগইন সফল হলে ড্যাশবোর্ডে রিডাইরেক্ট করো
+            window.location.href = "dashboard.html";
+        })
+        .catch((error) => {
+            alert(error.message); // যদি কোনো এরর হয়
+        });
+}
+
+// 🆕 User Signup Function
+function signup() {
+    let email = document.getElementById("signup-email").value;
+    let password = document.getElementById("signup-password").value;
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // সাইনআপ সফল হলে ড্যাশবোর্ডে পাঠানো হবে
+            window.location.href = "dashboard.html";
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
+}
+function logout() {
+    firebase.auth().signOut().then(() => {
+        window.location.href = "index.html"; // লগআউট হলে লগইন পেজে যাবে
+    });
+}
