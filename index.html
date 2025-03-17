@@ -14,17 +14,21 @@
             <h2>Welcome Back!</h2>
             <p>Login to continue</p>
 
-            <div class="input-group">
-                <i class="fas fa-envelope"></i>
-                <input type="email" id="email" placeholder="Email">
-            </div>
+            <!-- ফর্ম যোগ করা হলো -->
+            <form onsubmit="event.preventDefault(); login();">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Enter your email" required />
+                </div>
 
-            <div class="input-group">
-                <i class="fas fa-lock"></i>
-                <input type="password" id="password" placeholder="Password">
-            </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Enter your password" required />
+                </div>
 
-            <button onclick="login()" class="btn">Login</button>
+                <button type="submit" class="btn">Log In</button>
+            </form>
+
             <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
         </div>
     </div>
