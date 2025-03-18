@@ -1,44 +1,53 @@
-// Supabase Initialization (Updated)
 const SUPABASE_URL = "https://pbnlcbnxzjgeflozxwbt.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBibmxjYm54empnZWZsb3p4d2J0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIyNjU3NTAsImV4cCI6MjA1Nzg0MTc1MH0.sZylRRmtx88t0d2x40yhgQrvWDAwPimBxtsKgDE_EpQ";
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBibmxjYm54empnZWZsb3p4d2J0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIyNjU3NTAsImV4cCI6MjA1Nzg0MTc1MH0.sZylRRmtx88t0d2x40yhgQrvWDAwPimBxtsKgDE_EpQ";
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // ✅ Login Function
-async function login() {
-    let email = document.getElementById("loginEmail").value;
-    let password = document.getElementById("loginPassword").value;
+async function loginUser(event) {
+    event.preventDefault();
+    
+    let email = document.getElementById("login-email").value;
+    let password = document.getElementById("login-password").value;
 
     if (!email || !password) {
-        alert("❌ Please enter email and password!");
+        alert("ইমেইল এবং পাসওয়ার্ড দিতে হবে!");
         return;
     }
 
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password
+    });
 
     if (error) {
-        alert("❌ Login failed: " + error.message);
+        alert("লগইন ব্যর্থ হয়েছে! " + error.message);
+        console.error("Error:", error);
     } else {
-        alert("✅ Login successful!");
-        window.location.href = "dashboard.html";  // Redirect to dashboard
+        alert("লগইন সফল!");
+        window.location.href = "dashboard.html"; // লগইন হলে অন্য পেজে নিয়ে যাবে
     }
 }
-
 // ✅ Signup Function
-async function signUp() {
-    let name = document.getElementById("signupName").value;
-    let email = document.getElementById("signupEmail").value;
-    let password = document.getElementById("signupPassword").value;
+async function signUpUser(event) {
+    event.preventDefault();
 
-    if (!name || !email || !password) {
-        alert("❌ Please fill all fields!");
+    let email = document.getElementById("signup-email").value;
+    let password = document.getElementById("signup-password").value;
+
+    if (!email || !password) {
+        alert("ইমেইল এবং পাসওয়ার্ড দিতে হবে!");
         return;
     }
 
-    const { data, error } = await supabase.auth.signUp({ email, password });
+    const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password
+    });
 
     if (error) {
-        alert("❌ Signup failed: " + error.message);
+        alert("সাইনআপ ব্যর্থ হয়েছে! " + error.message);
+        console.error("Error:", error);
     } else {
-        alert("✅ Account created successfully!");
-        window.location.href = "index.html";  // Redirect to login page
+        alert("সাইনআপ সফল! অনুগ্রহ করে ইমেইল চেক করুন এবং ভেরিফাই করুন।");
+        window.location.href = "login.html"; // সাইনআপ হলে লগইন পেজে নিয়ে যাবে
     }
 }
