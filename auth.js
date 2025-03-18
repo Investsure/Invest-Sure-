@@ -22,7 +22,7 @@ document.getElementById("signup-form").addEventListener("submit", async function
         alert(error.message);
     } else {
         alert("Sign Up Successful!");
-        window.location.href = "login.html";
+        window.location.href = "login.html"; // Sign up successful হলে লগইন পেজে রিডাইরেক্ট হবে।
     }
 });
 
@@ -41,6 +41,6 @@ document.getElementById("login-form").addEventListener("submit", async function(
         alert(error.message);
     } else {
         alert("Login Successful!");
-        window.location.href = "dashboard.html";
+        window.location.href = "dashboard.html"; // লগইন সফল হলে ড্যাশবোর্ডে রিডাইরেক্ট হবে।
     }
 });
