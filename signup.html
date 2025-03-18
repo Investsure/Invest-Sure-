@@ -3,36 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up | Premium</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Sign Up | InvestSure</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <div class="container">
-        <div class="form-box">
-            <h2>Create an Account</h2>
-            <p>Join us today!</p>
-
-            <!-- ফর্ম যুক্ত করা হলো -->
-            <form onsubmit="event.preventDefault(); signUp();">
-                <div class="input-group">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email" id="email" placeholder="Enter your email" required />
-                </div>
-
-                <div class="input-group">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="password" placeholder="Enter your password" required />
-                </div>
-
+        <!-- Logo -->
+        <img src="https://assets.onecompiler.app/42weepxyg/43c5hnu9e/20250318_095411.png" alt="Logo">
+        
+        <!-- Heading -->
+        <h3>Create a New Account</h3>
+        
+        <!-- Signup Form -->
+        <div class="card">
+            <form action="#" method="POST">
+                <!-- Username Input -->
+                <input type="text" class="form-control" placeholder="Username" required>
+                
+                <!-- Email Input -->
+                <input type="email" class="form-control" placeholder="Email" required>
+                
+                <!-- Password Input -->
+                <input type="password" class="form-control" placeholder="Password" required>
+                
+                <!-- Signup Button -->
                 <button type="submit" class="btn">Sign Up</button>
+                
+                <!-- Already have an account link -->
+                <div style="text-align: center; margin-top: 10px;">
+                    <p>Already have an account? <a href="login.html">Login</a></p>
+                </div>
             </form>
-
-            <p>Already have an account? <a href="index.html">Login</a></p>
         </div>
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
