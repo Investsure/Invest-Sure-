@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - InvestSure</title>
+    <title>InvestSure - Home</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="auth-container">
-        <img src="https://assets.onecompiler.app/42weepxyg/43c5hnu9e/20250318_095411.png" class="logo"> <!-- সুন্দর লোগো যুক্ত -->
-        <h2>Login to InvestSure</h2>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <img src="https://assets.onecompiler.app/42weepxyg/43c5hnu9e/20250318_095411.png" alt="InvestSure Logo">
+        </div>
+        <div class="nav-links">
+            <a href="signup.html">Sign Up</a>
+            <a href="login.html">Login</a>
+        </div>
+    </nav>
 
-        <input type="email" id="loginEmail" placeholder="Email" required>
-        <input type="password" id="loginPassword" placeholder="Password" required>
-        
-        <button onclick="login()">Login</button>
-        
-        <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    <div class="container">
+        <h1>Welcome to InvestSure</h1>
+        <p>Your Trusted Investment Platform</p>
+        <a href="signup.html" class="cta-button">Get Started</a>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-    <script src="script.js"></script>
 </body>
 </html>
