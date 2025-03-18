@@ -3,26 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InvestSure - Home</title>
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
+    <title>Google Login with Supabase</title>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav>
-        <div class="logo">
-            <img src="https://assets.onecompiler.app/42weepxyg/43c5hnu9e/20250318_095411.png" alt="InvestSure Logo">
-        </div>
-        <div class="nav-links">
-            <a href="signup.html">Sign Up</a>
-            <a href="login.html">Login</a>
-        </div>
-    </nav>
+    <h2>Google Login with Supabase</h2>
+    <button id="google-login">Login with Google</button>
+    <button id="logout">Logout</button>
+    
+    <p id="user-info"></p>
 
-    <div class="container">
-        <h1>Welcome to InvestSure</h1>
-        <p>Your Trusted Investment Platform</p>
-        <a href="signup.html" class="cta-button">Get Started</a>
-    </div>
+    <script type="module" src="auth.js"></script>
 </body>
 </html>
