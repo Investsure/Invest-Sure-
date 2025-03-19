@@ -85,19 +85,18 @@
         const password = document.getElementById('password').value;
 
         if (isSignUp) {
-            const { user, error } = await supabase.auth.signUp({ email, password });
+            const { data, error } = await supabase.auth.signUp({ email, password });
             if (error) {
                 alert(error.message);
             } else {
                 alert('Sign up successful! Please check your email to verify your account.');
             }
         } else {
-            const { user, error } = await supabase.auth.signInWithPassword({ email, password });
+            const { data, error } = await supabase.auth.signInWithPassword({ email, password });
             if (error) {
                 alert(error.message);
             } else {
-                alert('Login successful!');
-                window.location.href = 'dashboard.html'; // Redirect to dashboard
+                alert('Project Successful');
             }
         }
     });
