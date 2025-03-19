@@ -3,15 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Login with Supabase</title>
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Google Login with Supabase</h2>
-    <button id="google-login">Login with Google</button>
-    <button id="logout">Logout</button>
-    
-    <p id="user-info"></p>
 
-    <script type="module" src="auth.js"></script>
+    <div class="container">
+        <h2>Welcome to InvestSure</h2>
+
+        <div id="auth">
+            <input type="email" id="email" placeholder="Enter Email" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            
+            <button id="signupBtn">Sign Up</button>
+            <button id="loginBtn">Login</button>
+
+            <p id="message"></p>
+        </div>
+
+        <div id="dashboard" style="display: none;">
+            <h3>Welcome, <span id="userEmail"></span></h3>
+            <button id="logoutBtn">Logout</button>
+        </div>
+    </div>
+
+    <script src="script.js" type="module"></script>
 </body>
 </html>
