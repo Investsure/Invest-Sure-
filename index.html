@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Signup</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InvestSure - Login / SignUp</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h2>Welcome to InvestSure</h2>
+  <div class="container">
+    <div class="form-container">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="https://assets.onecompiler.app/42weepxyg/43c5hnu9e/20250318_095411.png" alt="InvestSure Logo">
+      </div>
 
-        <div id="auth">
-            <input type="email" id="email" placeholder="Enter Email" required>
-            <input type="password" id="password" placeholder="Enter Password" required>
-            
-            <button id="signupBtn">Sign Up</button>
-            <button id="loginBtn">Login</button>
+      <!-- Form Switch (Login/SignUp) -->
+      <div class="form-switch">
+        <button class="switch-btn active" id="login-btn">Login</button>
+        <button class="switch-btn" id="signup-btn">SignUp</button>
+      </div>
 
-            <p id="message"></p>
-        </div>
+      <!-- Login Form -->
+      <form id="login-form" class="form" action="" method="POST">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button type="submit" id="login-submit">Login</button>
+      </form>
 
-        <div id="dashboard" style="display: none;">
-            <h3>Welcome, <span id="userEmail"></span></h3>
-            <button id="logoutBtn">Logout</button>
-        </div>
+      <!-- SignUp Form -->
+      <form id="signup-form" class="form" action="" method="POST" style="display: none;">
+        <input type="email" id="signup-email" placeholder="Email" required>
+        <input type="password" id="signup-password" placeholder="Password" required>
+        <button type="submit" id="signup-submit">SignUp</button>
+      </form>
+
     </div>
+  </div>
 
-    <script src="script.js" type="module"></script>
+  <script src="script.js"></script>
 </body>
 </html>
