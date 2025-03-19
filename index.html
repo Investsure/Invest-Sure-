@@ -1,107 +1,32 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login / Sign Up</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #f4f4f4;
-        }
-        .container {
-            width: 300px;
-            background: white;
-            padding: 20px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            text-align: center;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #0056b3;
-        }
-        .toggle-text {
-            margin-top: 10px;
-            cursor: pointer;
-            color: #007BFF;
-        }
-        .toggle-text span {
-            font-weight: bold;
-        }
-    </style>
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="container">
-        <div class="form-box">
-            <h2 id="form-title">Login</h2>
-            <form id="auth-form">
-                <input type="email" id="email" placeholder="Email" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit" id="auth-button">Login</button>
-            </form>
-            <p class="toggle-text">Don't have an account? <span id="toggle-form">Sign Up</span></p>
+        <h2>Welcome to InvestSure</h2>
+
+        <div id="auth">
+            <input type="email" id="email" placeholder="Enter Email" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            
+            <button id="signupBtn">Sign Up</button>
+            <button id="loginBtn">Login</button>
+
+            <p id="message"></p>
         </div>
-    </div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-<script>
-    const supabaseUrl = 'https://pbnlcbnxzjgeflozxwbt.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBibmxjYm54empnZWZsb3p4d2J0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIyNjU3NTAsImV4cCI6MjA1Nzg0MTc1MH0.sZylRRmtx88t0d2x40yhgQrvWDAwPimBxtsKgDE_EpQ';
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-    const form = document.getElementById('auth-form');
-    const toggleText = document.getElementById('toggle-form');
-    const formTitle = document.getElementById('form-title');
-    const authButton = document.getElementById('auth-button');
-    let isSignUp = false;
+        <div id="dashboard" style="display: none;">
+            <h3>Welcome, <span id="userEmail"></span></h3>
+            <button id="logoutBtn">Logout</button>
+        </div>
+    </div>
 
-    toggleText.addEventListener('click', () => {
-        isSignUp = !isSignUp;
-        formTitle.textContent = isSignUp ? 'Sign Up' : 'Login';
-        authButton.textContent = isSignUp ? 'Sign Up' : 'Login';
-        toggleText.innerHTML = isSignUp ? "Already have an account? <span>Login</span>" : "Don't have an account? <span>Sign Up</span>";
-    });
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-
-        if (isSignUp) {
-            const { data, error } = await supabase.auth.signUp({ email, password });
-            if (error) {
-                alert('Sign up failed: ' + error.message);
-            } else {
-                alert('Sign up successful! Please check your email to verify your account.');
-            }
-        } else {
-            const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-            if (error) {
-                alert('Login failed: ' + error.message);
-            } else {
-                alert('Project Successful');
-                window.location.href = 'dashboard.html';
-            }
-        }
-    });
-</script>
-
+    <script src="script.js" type="module"></script>
 </body>
 </html>
