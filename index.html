@@ -87,16 +87,17 @@
         if (isSignUp) {
             const { data, error } = await supabase.auth.signUp({ email, password });
             if (error) {
-                alert(error.message);
+                alert('Sign up failed: ' + error.message);
             } else {
                 alert('Sign up successful! Please check your email to verify your account.');
             }
         } else {
             const { data, error } = await supabase.auth.signInWithPassword({ email, password });
             if (error) {
-                alert(error.message);
+                alert('Login failed: ' + error.message);
             } else {
                 alert('Project Successful');
+                window.location.href = 'dashboard.html';
             }
         }
     });
