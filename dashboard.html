@@ -1,7 +1,0 @@
-
-// Supabase setup (same as above)
-const { data: user } = await supabase.auth.getUser();
-
-if (user) {
-    window.location.href = "dashboard.html"; // যদি ইউজার লগইন থাকে, ড্যাশবোর্ডে পাঠাবে।
-}
