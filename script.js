@@ -86,3 +86,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const user = JSON.parse(localStorage.getItem('user'));
     updateUI(user);
 });
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="supabase-config.js"></script>
