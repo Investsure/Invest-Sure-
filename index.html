@@ -1,32 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Signup</title>
-    <link rel="stylesheet" href="style.css">
+    <title>OTP নোটিফিকেশন সিমুলেশন</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:disabled {
+            background: gray;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>Welcome to InvestSure</h2>
+    <button id="otpButton">ওটিপি পাঠান</button>
 
-        <div id="auth">
-            <input type="email" id="email" placeholder="Enter Email" required>
-            <input type="password" id="password" placeholder="Enter Password" required>
-            
-            <button id="signupBtn">Sign Up</button>
-            <button id="loginBtn">Login</button>
+    <script>
+        document.getElementById("otpButton").addEventListener("click", function () {
+            let otpButton = document.getElementById("otpButton");
 
-            <p id="message"></p>
-        </div>
+            // বাটন ডিসেবল করে দেওয়া হচ্ছে ১০ সেকেন্ডের জন্য
+            otpButton.disabled = true;
+            otpButton.innerText = "OTP পাঠানো হচ্ছে...";
 
-        <div id="dashboard" style="display: none;">
-            <h3>Welcome, <span id="userEmail"></span></h3>
-            <button id="logoutBtn">Logout</button>
-        </div>
-    </div>
+            // ১০ সেকেন্ড পর নোটিফিকেশন পাঠানো হবে
+            setTimeout(function () {
+                // র‍্যান্ডম ৪ ডিজিটের OTP তৈরি
+                let randomOTP = Math.floor(1000 + Math.random() * 9000);
+                
+                // নোটিফিকেশন পাঠানোর জন্য অনুমতি চাওয়া
+                if (Notification.permission === "granted") {
+                    new Notification("আপনার OTP এসেছে!", {
+                        body: `আপনার OTP: ${randomOTP}`,
+                        icon: "https://cdn-icons-png.flaticon.com/512/747/747376.png"
+                    });
+                } else if (Notification.permission !== "denied") {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === "granted") {
+                            new Notification("আপনার OTP এসেছে!", {
+                                body: `আপনার OTP: ${randomOTP}`,
+                                icon: "https://cdn-icons-png.flaticon.com/512/747/747376.png"
+                            });
+                        }
+                    });
+                }
 
-    <script src="script.js" type="module"></script>
+                // ৩ সেকেন্ড পর বাটন আবার এনাবল করা হবে
+                setTimeout(() => {
+                    otpButton.disabled = false;
+                    otpButton.innerText = "ওটিপি পাঠান";
+                }, 3000);
+
+            }, 10000);
+        });
+    </script>
+
 </body>
 </html>
